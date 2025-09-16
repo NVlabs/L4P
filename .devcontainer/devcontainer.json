@@ -1,0 +1,69 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "L4P",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "l4p:local",
+
+    //for nvidia-docker
+    "runArgs": ["--gpus", "all", "--ipc", "host"],
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [8001, 8002, 8003, 8004, 8005, 
+                     8006, 8007, 8008, 8009, 8010, 
+                     8011, 8012, 8013, 8014, 8015, 
+                     8016, 8017, 8018, 8019, 8020],
+
+    // Specify current code mount path
+    "workspaceMount":"source=${localWorkspaceFolder},target=/home/user/code,type=bind",
+    "workspaceFolder": "/home/user/code",
+
+    //Specify additional mount paths for data, results, and .ssh files
+    //Be careful about the mountung of .ssh files
+    "mounts": [
+        // ADD YOUR OWN MOUNT PATHS HERE
+        //"source=<path_to_results>,target=/home/user/results,type=bind",
+        //"source=<path_to_data>,target=/home/user/data,type=bind,readonly",
+        
+        // Allows for gitconfig and ssh keys to be mounted
+        //"source=/home/${localEnv:USER}/.ssh,target=/home/user/.ssh,type=bind,readonly",
+        //"source=/home/${localEnv:USER}/.gitconfig,target=/home/user/.gitconfig,type=bind,readonly"
+    ],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": ["nvidia-smi"],
+
+	// Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            //"settings": {}
+
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+				"ms-python.python",
+                "ms-python.debugpy",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "ms-python.mypy",
+                "njpwerner.autodocstring",
+                "ms-python.isort",
+                "ms-python.black-formatter",
+                "ms-toolsai.jupyter"
+			],
+            "extensions.verifySignature": false
+        }
+    },
+
+    // Setup environment variables
+    "containerEnv": {
+        "WANDB_API_KEY": "${localEnv:WANDB_API_KEY}"
+    },
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "vscode"
+}

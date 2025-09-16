@@ -1,0 +1,67 @@
+class_path: l4p.l4p.L4PLitModule
+init_args:
+
+  tasks:
+    - 'flow_2d_backward'
+    - 'track_2d'
+    - 'depth'
+    - 'dyn_mask'
+    - 'camray'
+
+  strict_loading: true 
+
+  l4p_model:
+    class_path: l4p.models.l4p_videomae.L4P_VideoMAE
+    init_args:
+      video_encoder_ckpt_path: null 
+      freeze_video_encoder: false 
+      unfreeze_blocks: null
+      always_use_windowed_version: true 
+      joint_alignment: true 
+      task_heads:
+        class_path: torch.nn.ModuleDict
+        init_args:
+          modules:
+            flow_2d_backward:
+              class_path: l4p.models.task_heads.dense_heads.VideoMAEFlowDPTHead
+              init_args:
+                task_name: 'flow_2d_backward'
+                out_nchan: 2
+                hooks_idx: [14, 21, 28, 36]
+            depth:
+              class_path: l4p.models.task_heads.dense_heads.VideoMAEDepthDPTHead
+              init_args:
+                task_name: 'depth'
+                out_nchan: 1
+                depth_fn: 'exp' 
+                hooks_idx: [14, 21, 28, 36]
+                align_window_overlap_fn: 'inverse'
+            camray:
+              class_path: l4p.models.task_heads.dense_heads.VideoMAETraj3DDPTHead
+              init_args:
+                task_name: 'traj3d'
+                hooks_idx: [14, 21, 28, 36]
+                use_intrinsics: false
+                fixed_intrinsics: true
+            dyn_mask:
+              class_path: l4p.models.task_heads.dense_heads.VideoMAEDynMaskDPTHead
+              init_args:
+                task_name: 'dyn_mask'
+                out_nchan: 1
+                apply_fn: 'linear'
+                hooks_idx: [14, 21, 28, 36]
+            track_2d:
+              class_path: l4p.models.task_heads.sparse_heads.VideoMAETrack2DSamHead
+              init_args:
+                task_name: 'track_2d'
+                estimate_vis: true
+                estimate_depth: true
+                sam_head_depth: 2
+                num_point_embeddings: 2
+                prompt_using_features: true
+                attend_to_past: true
+                modify_pointlabels_for_windowing: true
+                estimation_directions: [1]
+                depth_fn: 'exp'
+                vis_fn: 'linear' 
+

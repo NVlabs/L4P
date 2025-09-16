@@ -1,0 +1,17 @@
+__pycache__
+*.jpeg
+*.jpg
+*.png
+*.mp4
+*.gif
+*.obj
+*.ply
+*.ckpt
+*.pth
+*.DS_Store
+*.zip
+*.bin
+*.bak
+**/results/*
+demo/results/*
+demo/data/*
