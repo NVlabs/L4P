@@ -160,7 +160,7 @@ The sample results shown above are from:
 ```bibtex
 @article{badki2025l4p,
   author    = {Badki, Abhishek and Su, Hang and Wen, Bowen and Gallo, Orazio},
-  title     = {{L4P}: {L}ow-Level {4D} Vision Perception Unified},
+  title     = {{L4P}: Towards Unified {L}ow-Level {4D} Vision Perception},
   journal   = arxiv,
   year      = {2025},
 }
