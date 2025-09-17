@@ -33,14 +33,15 @@
 
 <br>
 
-<img src="media/teaser.png" height="320" alt="L4P Teaser" style="border-radius: 8px; box-shadow: 0 2px 8px #0002;"/>
-
-
+<img src="media/galileo_teaser_text.gif"  width="640" style="border-radius: 8px; box-shadow: 0 2px 8px #0002;"/> <br>
 
 </div>
 
 L4P is a feed-forward foundational model designed for multiple low-level 4D vision perception tasks. Given a monocular video without camera poses, L4P jointly solves several tasks using a shared video encoder backbone and lightweight, task-specific heads. The model is currently trained to predict depth, optical flow, 2D/3D point tracking, dynamic motion segmentation, and camera pose estimation, and can be extended to support additional tasks.
 
+<p align="center">
+<img src="media/teaser.png" width="640" alt="L4P Teaser" style="border-radius: 8px; box-shadow: 0 2px 8px #0002;"/>
+</p>
 
 ## News
 
@@ -159,7 +160,7 @@ The sample results shown above are from:
 ```bibtex
 @article{badki2025l4p,
   author    = {Badki, Abhishek and Su, Hang and Wen, Bowen and Gallo, Orazio},
-  title     = {{L4P}: Towards Unified {L}ow-Level {4D} Vision Perception},
+  title     = {{L4P}: {L}ow-Level {4D} Vision Perception Unified},
   journal   = arxiv,
   year      = {2025},
 }
