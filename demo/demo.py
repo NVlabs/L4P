@@ -84,12 +84,7 @@ def main():
     print("=" * 60)
     # You can add your videos to data/videos
     data_name = "videos"
-    data_root = "data/videos"
-    video_paths = [
-        "data/videos/dycheck_paper_windmill.mp4",
-        "data/videos/sintel_alley_2.mp4",
-        "data/videos/simuscope_0.mp4",
-    ]
+    video_paths = ["data/davis/davis_train.mp4", "data/video/galileo.mp4"]
     test_dataset = VideoDataset(
         video_paths=video_paths,
         crop_size=(16, 224, 224) if limit_gpu_mem_usage else (64, 224, 224),
@@ -173,7 +168,7 @@ def main():
     )
     print("=" * 60)
     data_name = "videos"
-    video_paths = ["data/videos/dycheck_paper_windmill.mp4", "data/videos/sintel_alley_2.mp4"]
+    video_paths = ["data/davis/davis_train.mp4", "data/video/galileo.mp4"]
     test_dataset = VideoDataset(
         video_paths=video_paths,
         crop_size=(16, 224, 224) if limit_gpu_mem_usage else (64, 224, 224),
@@ -220,11 +215,11 @@ def main():
     model.l4p_model.task_heads["camray"].use_intrinsics = True  # uses input camera intrinsics
 
     data_name = "dycheck"
-    data_root = "data/dycheck"
+    data_root = "data/dycheck/extracted"
     test_dataset = DycheckDataset(
         data_root=data_root,
         resize_size=(298, 224),  # resize but keep aspect ratio
-        crop_size=(16, 224, 224) if limit_gpu_mem_usage else (64, 224, 224),
+        crop_size=(16,224,224) if limit_gpu_mem_usage else (64,224,224),
         stride=2,
         track_2d_querry_sampling_spacing=0.04,
     )
