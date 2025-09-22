@@ -148,7 +148,7 @@ Because we estimate camera poses (with or without input intrinsics), we can visu
 ## Limitations and Future improvements
 * Our approach is limited to 224 x 224 resolution.
 * The depth, camera poses and 3D tracks are generated using different heads in a feedforward manner. 
-So they are might not be perfectly consistent with each other.
+So they might not be perfectly consistent with each other.
 * Our current implementation of pose-alignment between overlapping windows is done on CPU, so a bit slow. A faster version is coming soon.
 
 ## References
