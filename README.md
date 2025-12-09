@@ -45,6 +45,7 @@ L4P is a feed-forward foundational model designed for multiple low-level 4D visi
 
 ## News
 
+- [2025/11] Paper is accepted at 3DV 2026 (Oral).
 - [2025/9] We released the inference code.
 
 ## Setup
@@ -158,11 +159,11 @@ The sample results shown above are from:
 
 ## BibTeX
 ```bibtex
-@article{badki2025l4p,
-  author    = {Badki, Abhishek and Su, Hang and Wen, Bowen and Gallo, Orazio},
-  title     = {{L4P}: Towards Unified {L}ow-Level {4D} Vision Perception},
-  journal   = arxiv,
-  year      = {2025},
+@inproceedings{badki2026l4p,
+  title={{L4P}: {T}owards Unified Low-Level {4D} Vision Perception},
+  author={Badki, Abhishek and Su, Hang and Wen, Bowen and Gallo, Orazio},
+  booktitle={International Conference on 3D Vision (3DV)},
+  year={2026}
 }
 ```
 
